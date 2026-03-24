@@ -1929,3 +1929,165 @@ feign.FeignException$BadRequest: [400] during [DELETE] to [http://cart-service/c
 16:01:41:090  INFO 33116 --- [rpcDispatch_RMROLE_1_2_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455376,branchId=27782987405455378,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-trade,applicationData={"autoCommit":false,"skipCheckLock":true}
 16:01:41:090  INFO 33116 --- [rpcDispatch_RMROLE_1_2_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455376 27782987405455378 jdbc:mysql://192.168.100.129:3306/hm-trade {"autoCommit":false,"skipCheckLock":true}
 16:01:41:090  INFO 33116 --- [rpcDispatch_RMROLE_1_2_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
+16:05:44:543  INFO 33116 --- [http-nio-8084-exec-2] i.seata.tm.api.DefaultGlobalTransaction  : Begin new global transaction [192.168.100.129:8099:27782987405455380]
+16:05:44:545 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] ---> GET http://item-service/items?ids=317578 HTTP/1.1
+16:05:44:545 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] user-info: 1
+16:05:44:545 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] ---> END HTTP (0-byte body)
+16:05:44:555 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] <--- HTTP/1.1 200 (10ms)
+16:05:44:555 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] connection: keep-alive
+16:05:44:555 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] content-type: application/json
+16:05:44:555 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] date: Tue, 24 Mar 2026 08:05:44 GMT
+16:05:44:555 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] keep-alive: timeout=60
+16:05:44:555 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] transfer-encoding: chunked
+16:05:44:555 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] 
+16:05:44:555 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] [{"id":"317578","name":"RIMOWA 21寸托运箱拉杆箱 SALSA AIR系列果绿色 820.70.36.4","price":28900,"stock":9995,"image":"https://m.360buyimg.com/mobilecms/s720x720_jfs/t6934/364/1195375010/84676/e9f2c55f/597ece38N0ddcbc77.jpg!q70.jpg.webp","category":"拉杆箱","brand":"RIMOWA","spec":"{\"颜色\": \"红色\", \"尺码\": \"21寸\"}","sold":0,"commentCount":0,"isAD":false,"status":1}]
+16:05:44:555 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] <--- END HTTP (396-byte body)
+16:05:44:557 DEBUG 33116 --- [http-nio-8084-exec-2] c.hmall.trade.mapper.OrderMapper.insert  : ==>  Preparing: INSERT INTO `order` ( id, total_fee, payment_type, user_id, status ) VALUES ( ?, ?, ?, ?, ? )
+16:05:44:558 DEBUG 33116 --- [http-nio-8084-exec-2] c.hmall.trade.mapper.OrderMapper.insert  : ==> Parameters: 2036353759528902657(Long), 28900(Integer), 3(Integer), 1(Long), 1(Integer)
+16:05:44:578 DEBUG 33116 --- [http-nio-8084-exec-2] c.hmall.trade.mapper.OrderMapper.insert  : <==    Updates: 1
+16:05:44:580 DEBUG 33116 --- [http-nio-8084-exec-2] c.h.t.mapper.OrderDetailMapper.insert    : ==>  Preparing: INSERT INTO order_detail ( order_id, item_id, num, name, spec, price, image ) VALUES ( ?, ?, ?, ?, ?, ?, ? )
+16:05:44:581 DEBUG 33116 --- [http-nio-8084-exec-2] c.h.t.mapper.OrderDetailMapper.insert    : ==> Parameters: 2036353759528902657(Long), 317578(Long), 1(Integer), RIMOWA 21寸托运箱拉杆箱 SALSA AIR系列果绿色 820.70.36.4(String), {"颜色": "红色", "尺码": "21寸"}(String), 28900(Integer), https://m.360buyimg.com/mobilecms/s720x720_jfs/t6934/364/1195375010/84676/e9f2c55f/597ece38N0ddcbc77.jpg!q70.jpg.webp(String)
+16:05:44:606 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] ---> DELETE http://cart-service/carts?userId=1&ids=317578 HTTP/1.1
+16:05:44:607 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] user-info: 1
+16:05:44:607 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] ---> END HTTP (0-byte body)
+16:05:51:885 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] <--- HTTP/1.1 200 (7278ms)
+16:05:51:886 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] connection: keep-alive
+16:05:51:886 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] content-length: 0
+16:05:51:886 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] date: Tue, 24 Mar 2026 08:05:51 GMT
+16:05:51:886 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] keep-alive: timeout=60
+16:05:51:886 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] 
+16:05:51:886 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] <--- END HTTP (0-byte body)
+16:05:51:886 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] ---> PUT http://item-service/items/stock/deduct HTTP/1.1
+16:05:51:886 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] Content-Length: 29
+16:05:51:886 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] Content-Type: application/json
+16:05:51:888 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] user-info: 1
+16:05:51:888 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] 
+16:05:51:888 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] [{"itemId":"317578","num":1}]
+16:05:51:888 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] ---> END HTTP (29-byte body)
+16:05:51:911 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] <--- HTTP/1.1 200 (23ms)
+16:05:51:911 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] connection: keep-alive
+16:05:51:911 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] content-length: 0
+16:05:51:911 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] date: Tue, 24 Mar 2026 08:05:51 GMT
+16:05:51:911 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] keep-alive: timeout=60
+16:05:51:911 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] 
+16:05:51:911 DEBUG 33116 --- [http-nio-8084-exec-2] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] <--- END HTTP (0-byte body)
+16:05:51:923  INFO 33116 --- [http-nio-8084-exec-2] i.seata.tm.api.DefaultGlobalTransaction  : Suspending current transaction, xid = 192.168.100.129:8099:27782987405455380
+16:05:51:923  INFO 33116 --- [http-nio-8084-exec-2] i.seata.tm.api.DefaultGlobalTransaction  : [192.168.100.129:8099:27782987405455380] commit status: Committed
+16:05:52:040  INFO 33116 --- [rpcDispatch_RMROLE_1_3_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455380,branchId=27782987405455381,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-trade,applicationData={"skipCheckLock":true}
+16:05:52:040  INFO 33116 --- [rpcDispatch_RMROLE_1_3_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455380 27782987405455381 jdbc:mysql://192.168.100.129:3306/hm-trade {"skipCheckLock":true}
+16:05:52:040  INFO 33116 --- [rpcDispatch_RMROLE_1_3_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
+16:05:52:050  INFO 33116 --- [rpcDispatch_RMROLE_1_4_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455380,branchId=27782987405455382,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-trade,applicationData={"autoCommit":false,"skipCheckLock":true}
+16:05:52:050  INFO 33116 --- [rpcDispatch_RMROLE_1_4_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455380 27782987405455382 jdbc:mysql://192.168.100.129:3306/hm-trade {"autoCommit":false,"skipCheckLock":true}
+16:05:52:050  INFO 33116 --- [rpcDispatch_RMROLE_1_4_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
+16:06:01:791  INFO 33116 --- [http-nio-8084-exec-4] i.seata.tm.api.DefaultGlobalTransaction  : Begin new global transaction [192.168.100.129:8099:27782987405455384]
+16:06:01:792 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] ---> GET http://item-service/items?ids=317578 HTTP/1.1
+16:06:01:792 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] user-info: 1
+16:06:01:792 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] ---> END HTTP (0-byte body)
+16:06:01:803 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] <--- HTTP/1.1 200 (9ms)
+16:06:01:803 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] connection: keep-alive
+16:06:01:803 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] content-type: application/json
+16:06:01:803 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] date: Tue, 24 Mar 2026 08:06:01 GMT
+16:06:01:803 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] keep-alive: timeout=60
+16:06:01:803 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] transfer-encoding: chunked
+16:06:01:803 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] 
+16:06:01:803 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] [{"id":"317578","name":"RIMOWA 21寸托运箱拉杆箱 SALSA AIR系列果绿色 820.70.36.4","price":28900,"stock":9994,"image":"https://m.360buyimg.com/mobilecms/s720x720_jfs/t6934/364/1195375010/84676/e9f2c55f/597ece38N0ddcbc77.jpg!q70.jpg.webp","category":"拉杆箱","brand":"RIMOWA","spec":"{\"颜色\": \"红色\", \"尺码\": \"21寸\"}","sold":0,"commentCount":0,"isAD":false,"status":1}]
+16:06:01:803 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] <--- END HTTP (396-byte body)
+16:06:01:805 DEBUG 33116 --- [http-nio-8084-exec-4] c.hmall.trade.mapper.OrderMapper.insert  : ==>  Preparing: INSERT INTO `order` ( id, total_fee, payment_type, user_id, status ) VALUES ( ?, ?, ?, ?, ? )
+16:06:01:805 DEBUG 33116 --- [http-nio-8084-exec-4] c.hmall.trade.mapper.OrderMapper.insert  : ==> Parameters: 2036353831855480833(Long), 28900(Integer), 3(Integer), 1(Long), 1(Integer)
+16:06:01:836 DEBUG 33116 --- [http-nio-8084-exec-4] c.hmall.trade.mapper.OrderMapper.insert  : <==    Updates: 1
+16:06:01:837 DEBUG 33116 --- [http-nio-8084-exec-4] c.h.t.mapper.OrderDetailMapper.insert    : ==>  Preparing: INSERT INTO order_detail ( order_id, item_id, num, name, spec, price, image ) VALUES ( ?, ?, ?, ?, ?, ?, ? )
+16:06:01:837 DEBUG 33116 --- [http-nio-8084-exec-4] c.h.t.mapper.OrderDetailMapper.insert    : ==> Parameters: 2036353831855480833(Long), 317578(Long), 1(Integer), RIMOWA 21寸托运箱拉杆箱 SALSA AIR系列果绿色 820.70.36.4(String), {"颜色": "红色", "尺码": "21寸"}(String), 28900(Integer), https://m.360buyimg.com/mobilecms/s720x720_jfs/t6934/364/1195375010/84676/e9f2c55f/597ece38N0ddcbc77.jpg!q70.jpg.webp(String)
+16:06:01:862 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] ---> DELETE http://cart-service/carts?userId=1&ids=317578 HTTP/1.1
+16:06:01:862 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] user-info: 1
+16:06:01:862 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] ---> END HTTP (0-byte body)
+16:06:01:874 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] <--- HTTP/1.1 200 (11ms)
+16:06:01:874 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] connection: keep-alive
+16:06:01:874 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] content-length: 0
+16:06:01:874 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] date: Tue, 24 Mar 2026 08:06:01 GMT
+16:06:01:874 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] keep-alive: timeout=60
+16:06:01:874 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] 
+16:06:01:874 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] <--- END HTTP (0-byte body)
+16:06:01:875 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] ---> PUT http://item-service/items/stock/deduct HTTP/1.1
+16:06:01:875 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] Content-Length: 29
+16:06:01:875 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] Content-Type: application/json
+16:06:01:875 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] user-info: 1
+16:06:01:875 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] 
+16:06:01:875 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] [{"itemId":"317578","num":1}]
+16:06:01:875 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] ---> END HTTP (29-byte body)
+16:06:01:912 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] <--- HTTP/1.1 200 (38ms)
+16:06:01:914 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] connection: keep-alive
+16:06:01:914 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] content-length: 0
+16:06:01:914 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] date: Tue, 24 Mar 2026 08:06:01 GMT
+16:06:01:914 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] keep-alive: timeout=60
+16:06:01:914 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] 
+16:06:01:914 DEBUG 33116 --- [http-nio-8084-exec-4] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] <--- END HTTP (0-byte body)
+16:06:01:922  INFO 33116 --- [http-nio-8084-exec-4] i.seata.tm.api.DefaultGlobalTransaction  : Suspending current transaction, xid = 192.168.100.129:8099:27782987405455384
+16:06:01:922  INFO 33116 --- [http-nio-8084-exec-4] i.seata.tm.api.DefaultGlobalTransaction  : [192.168.100.129:8099:27782987405455384] commit status: Committed
+16:06:02:038  INFO 33116 --- [rpcDispatch_RMROLE_1_5_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455384,branchId=27782987405455385,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-trade,applicationData={"skipCheckLock":true}
+16:06:02:039  INFO 33116 --- [rpcDispatch_RMROLE_1_5_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455384 27782987405455385 jdbc:mysql://192.168.100.129:3306/hm-trade {"skipCheckLock":true}
+16:06:02:039  INFO 33116 --- [rpcDispatch_RMROLE_1_5_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
+16:06:02:042  INFO 33116 --- [rpcDispatch_RMROLE_1_6_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455384,branchId=27782987405455386,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-trade,applicationData={"autoCommit":false,"skipCheckLock":true}
+16:06:02:042  INFO 33116 --- [rpcDispatch_RMROLE_1_6_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455384 27782987405455386 jdbc:mysql://192.168.100.129:3306/hm-trade {"autoCommit":false,"skipCheckLock":true}
+16:06:02:042  INFO 33116 --- [rpcDispatch_RMROLE_1_6_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
+16:36:22:500  INFO 33116 --- [http-nio-8084-exec-6] i.seata.tm.api.DefaultGlobalTransaction  : Begin new global transaction [192.168.100.129:8099:27782987405455388]
+16:36:22:514 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] ---> GET http://item-service/items?ids=317580 HTTP/1.1
+16:36:22:515 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] user-info: 1
+16:36:22:515 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] ---> END HTTP (0-byte body)
+16:36:22:554 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] <--- HTTP/1.1 200 (39ms)
+16:36:22:554 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] connection: keep-alive
+16:36:22:554 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] content-type: application/json
+16:36:22:554 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] date: Tue, 24 Mar 2026 08:36:22 GMT
+16:36:22:554 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] keep-alive: timeout=60
+16:36:22:554 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] transfer-encoding: chunked
+16:36:22:554 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] 
+16:36:22:555 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] [{"id":"317580","name":"RIMOWA 26寸托运箱拉杆箱 SALSA AIR系列果绿色 820.70.36.4","price":28600,"stock":9993,"image":"https://m.360buyimg.com/mobilecms/s720x720_jfs/t6934/364/1195375010/84676/e9f2c55f/597ece38N0ddcbc77.jpg!q70.jpg.webp","category":"拉杆箱","brand":"RIMOWA","spec":"{\"颜色\": \"蓝色\", \"尺码\": \"26寸\"}","sold":0,"commentCount":0,"isAD":false,"status":1}]
+16:36:22:556 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#queryItemByIds] <--- END HTTP (396-byte body)
+16:36:22:580 DEBUG 33116 --- [http-nio-8084-exec-6] c.hmall.trade.mapper.OrderMapper.insert  : ==>  Preparing: INSERT INTO `order` ( id, total_fee, payment_type, user_id, status ) VALUES ( ?, ?, ?, ?, ? )
+16:36:22:753 DEBUG 33116 --- [http-nio-8084-exec-6] c.hmall.trade.mapper.OrderMapper.insert  : ==> Parameters: 2036361468718374913(Long), 28600(Integer), 3(Integer), 1(Long), 1(Integer)
+16:36:22:798 DEBUG 33116 --- [http-nio-8084-exec-6] c.hmall.trade.mapper.OrderMapper.insert  : <==    Updates: 1
+16:36:22:804 DEBUG 33116 --- [http-nio-8084-exec-6] c.h.t.mapper.OrderDetailMapper.insert    : ==>  Preparing: INSERT INTO order_detail ( order_id, item_id, num, name, spec, price, image ) VALUES ( ?, ?, ?, ?, ?, ?, ? )
+16:36:22:805 DEBUG 33116 --- [http-nio-8084-exec-6] c.h.t.mapper.OrderDetailMapper.insert    : ==> Parameters: 2036361468718374913(Long), 317580(Long), 1(Integer), RIMOWA 26寸托运箱拉杆箱 SALSA AIR系列果绿色 820.70.36.4(String), {"颜色": "蓝色", "尺码": "26寸"}(String), 28600(Integer), https://m.360buyimg.com/mobilecms/s720x720_jfs/t6934/364/1195375010/84676/e9f2c55f/597ece38N0ddcbc77.jpg!q70.jpg.webp(String)
+16:36:22:866 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] ---> DELETE http://cart-service/carts?userId=1&ids=317580 HTTP/1.1
+16:36:22:866 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] user-info: 1
+16:36:22:866 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] ---> END HTTP (0-byte body)
+16:36:23:127 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] <--- HTTP/1.1 200 (260ms)
+16:36:23:127 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] connection: keep-alive
+16:36:23:127 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] content-length: 0
+16:36:23:127 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] date: Tue, 24 Mar 2026 08:36:23 GMT
+16:36:23:127 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] keep-alive: timeout=60
+16:36:23:127 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] 
+16:36:23:128 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.CartClient          : [CartClient#deleteCartItemByIds] <--- END HTTP (0-byte body)
+16:36:23:131 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] ---> PUT http://item-service/items/stock/deduct HTTP/1.1
+16:36:23:132 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] Content-Length: 29
+16:36:23:132 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] Content-Type: application/json
+16:36:23:132 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] user-info: 1
+16:36:23:132 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] 
+16:36:23:132 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] [{"itemId":"317580","num":1}]
+16:36:23:132 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] ---> END HTTP (29-byte body)
+16:36:23:262 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] <--- HTTP/1.1 200 (130ms)
+16:36:23:263 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] connection: keep-alive
+16:36:23:263 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] content-length: 0
+16:36:23:263 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] date: Tue, 24 Mar 2026 08:36:22 GMT
+16:36:23:263 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] keep-alive: timeout=60
+16:36:23:263 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] 
+16:36:23:263 DEBUG 33116 --- [http-nio-8084-exec-6] com.hmall.api.client.ItemClient          : [ItemClient#deductStock] <--- END HTTP (0-byte body)
+16:36:23:273  INFO 33116 --- [http-nio-8084-exec-6] i.seata.tm.api.DefaultGlobalTransaction  : Suspending current transaction, xid = 192.168.100.129:8099:27782987405455388
+16:36:23:274  INFO 33116 --- [http-nio-8084-exec-6] i.seata.tm.api.DefaultGlobalTransaction  : [192.168.100.129:8099:27782987405455388] commit status: Committed
+16:36:23:491 DEBUG 33116 --- [http-nio-8084-exec-7] c.h.trade.mapper.OrderMapper.selectById  : ==>  Preparing: SELECT id,total_fee,payment_type,user_id,status,create_time,pay_time,consign_time,end_time,close_time,comment_time,update_time FROM `order` WHERE id=?
+16:36:23:492 DEBUG 33116 --- [http-nio-8084-exec-7] c.h.trade.mapper.OrderMapper.selectById  : ==> Parameters: 2036361468718374913(Long)
+16:36:23:532 DEBUG 33116 --- [http-nio-8084-exec-7] c.h.trade.mapper.OrderMapper.selectById  : <==      Total: 1
+16:36:24:026  INFO 33116 --- [rpcDispatch_RMROLE_1_7_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455388,branchId=27782987405455389,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-trade,applicationData={"skipCheckLock":true}
+16:36:24:026  INFO 33116 --- [rpcDispatch_RMROLE_1_7_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455388 27782987405455389 jdbc:mysql://192.168.100.129:3306/hm-trade {"skipCheckLock":true}
+16:36:24:027  INFO 33116 --- [rpcDispatch_RMROLE_1_7_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
+16:36:24:035  INFO 33116 --- [rpcDispatch_RMROLE_1_8_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455388,branchId=27782987405455390,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-trade,applicationData={"autoCommit":false,"skipCheckLock":true}
+16:36:24:035  INFO 33116 --- [rpcDispatch_RMROLE_1_8_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455388 27782987405455390 jdbc:mysql://192.168.100.129:3306/hm-trade {"autoCommit":false,"skipCheckLock":true}
+16:36:24:035  INFO 33116 --- [rpcDispatch_RMROLE_1_8_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
+16:36:29:406 DEBUG 33116 --- [http-nio-8084-exec-8] c.h.trade.mapper.OrderMapper.updateById  : ==>  Preparing: UPDATE `order` SET status=?, pay_time=? WHERE id=?
+16:36:29:439 DEBUG 33116 --- [http-nio-8084-exec-8] c.h.trade.mapper.OrderMapper.updateById  : ==> Parameters: 2(Integer), 2026-03-24T16:36:29.366847500(LocalDateTime), 2036361468718374913(Long)
+16:36:29:470 DEBUG 33116 --- [http-nio-8084-exec-8] c.h.trade.mapper.OrderMapper.updateById  : <==    Updates: 1
+16:36:29:568 DEBUG 33116 --- [http-nio-8084-exec-9] c.h.trade.mapper.OrderMapper.selectById  : ==>  Preparing: SELECT id,total_fee,payment_type,user_id,status,create_time,pay_time,consign_time,end_time,close_time,comment_time,update_time FROM `order` WHERE id=?
+16:36:29:569 DEBUG 33116 --- [http-nio-8084-exec-9] c.h.trade.mapper.OrderMapper.selectById  : ==> Parameters: 2036361468718374913(Long)
+16:36:29:573 DEBUG 33116 --- [http-nio-8084-exec-9] c.h.trade.mapper.OrderMapper.selectById  : <==      Total: 1
+16:36:30:060  INFO 33116 --- [rpcDispatch_RMROLE_1_9_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455393,branchId=27782987405455396,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-trade,applicationData=null
+16:36:30:060  INFO 33116 --- [rpcDispatch_RMROLE_1_9_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455393 27782987405455396 jdbc:mysql://192.168.100.129:3306/hm-trade null
+16:36:30:061  INFO 33116 --- [rpcDispatch_RMROLE_1_9_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed

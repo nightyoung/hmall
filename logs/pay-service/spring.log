@@ -1765,3 +1765,45 @@ com.alibaba.nacos.api.exception.NacosException: Client not connected, current st
 16:01:10:736  INFO 20532 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
 16:01:10:756  INFO 20532 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
 16:01:10:818  INFO 20532 --- [main] com.hmall.pay.PayApplication             : Started PayApplication in 29.427 seconds (JVM running for 33.144)
+16:36:24:004  INFO 20532 --- [http-nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+16:36:24:013  INFO 20532 --- [http-nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+16:36:24:075  INFO 20532 --- [http-nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 61 ms
+16:36:24:505 DEBUG 20532 --- [http-nio-8085-exec-1] c.h.pay.mapper.PayOrderMapper.selectOne  : ==>  Preparing: SELECT id,biz_order_no,pay_order_no,biz_user_id,pay_channel_code,amount,pay_type,status,expand_json,result_code,result_msg,pay_success_time,pay_over_time,qr_code_url,create_time,update_time,creater,updater,is_delete FROM pay_order WHERE (biz_order_no = ?)
+16:36:24:538 DEBUG 20532 --- [http-nio-8085-exec-1] c.h.pay.mapper.PayOrderMapper.selectOne  : ==> Parameters: 2036361468718374913(Long)
+16:36:24:610 DEBUG 20532 --- [http-nio-8085-exec-1] c.h.pay.mapper.PayOrderMapper.selectOne  : <==      Total: 0
+16:36:24:707 DEBUG 20532 --- [http-nio-8085-exec-1] c.h.pay.mapper.PayOrderMapper.insert     : ==>  Preparing: INSERT INTO pay_order ( id, biz_order_no, pay_order_no, biz_user_id, pay_channel_code, amount, pay_type, status, pay_over_time ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )
+16:36:24:711 DEBUG 20532 --- [http-nio-8085-exec-1] c.h.pay.mapper.PayOrderMapper.insert     : ==> Parameters: 2036361477694185474(Long), 2036361468718374913(Long), 2036361477639659522(Long), 1(Long), balance(String), 28600(Integer), 5(Integer), 1(Integer), 2026-03-24T18:36:24.690787300(LocalDateTime)
+16:36:24:717 DEBUG 20532 --- [http-nio-8085-exec-1] c.h.pay.mapper.PayOrderMapper.insert     : <==    Updates: 1
+16:36:28:381  INFO 20532 --- [http-nio-8085-exec-5] io.seata.tm.TransactionManagerHolder     : TransactionManager Singleton io.seata.tm.DefaultTransactionManager@14758759
+16:36:28:405  INFO 20532 --- [http-nio-8085-exec-5] i.seata.tm.api.DefaultGlobalTransaction  : Begin new global transaction [192.168.100.129:8099:27782987405455393]
+16:36:28:411 DEBUG 20532 --- [http-nio-8085-exec-5] c.h.p.mapper.PayOrderMapper.selectById   : ==>  Preparing: SELECT id,biz_order_no,pay_order_no,biz_user_id,pay_channel_code,amount,pay_type,status,expand_json,result_code,result_msg,pay_success_time,pay_over_time,qr_code_url,create_time,update_time,creater,updater,is_delete FROM pay_order WHERE id=?
+16:36:28:471 DEBUG 20532 --- [http-nio-8085-exec-5] c.h.p.mapper.PayOrderMapper.selectById   : ==> Parameters: 2036361477694185474(Long)
+16:36:28:486 DEBUG 20532 --- [http-nio-8085-exec-5] c.h.p.mapper.PayOrderMapper.selectById   : <==      Total: 1
+16:36:28:491 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.UserClient          : [UserClient#deductMoney] ---> PUT http://user-service/users/money/deduct?pw=123&amount=28600 HTTP/1.1
+16:36:28:491 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.UserClient          : [UserClient#deductMoney] user-info: 1
+16:36:28:491 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.UserClient          : [UserClient#deductMoney] ---> END HTTP (0-byte body)
+16:36:29:127 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.UserClient          : [UserClient#deductMoney] <--- HTTP/1.1 200 (635ms)
+16:36:29:127 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.UserClient          : [UserClient#deductMoney] connection: keep-alive
+16:36:29:127 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.UserClient          : [UserClient#deductMoney] content-length: 0
+16:36:29:128 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.UserClient          : [UserClient#deductMoney] date: Tue, 24 Mar 2026 08:36:29 GMT
+16:36:29:128 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.UserClient          : [UserClient#deductMoney] keep-alive: timeout=60
+16:36:29:128 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.UserClient          : [UserClient#deductMoney] 
+16:36:29:128 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.UserClient          : [UserClient#deductMoney] <--- END HTTP (0-byte body)
+16:36:29:134 DEBUG 20532 --- [http-nio-8085-exec-5] c.h.pay.mapper.PayOrderMapper.update     : ==>  Preparing: UPDATE pay_order SET status=?,pay_success_time=? WHERE (id = ? AND status IN (?,?))
+16:36:29:149 DEBUG 20532 --- [http-nio-8085-exec-5] c.h.pay.mapper.PayOrderMapper.update     : ==> Parameters: 3(Integer), 2026-03-24T16:36:29.128531400(LocalDateTime), 2036361477694185474(Long), 0(Integer), 1(Integer)
+16:36:29:342 DEBUG 20532 --- [http-nio-8085-exec-5] c.h.pay.mapper.PayOrderMapper.update     : <==    Updates: 1
+16:36:29:342 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.TradeClient         : [TradeClient#markOrderPaySuccess] ---> PUT http://trade-service/orders/2036361468718374913 HTTP/1.1
+16:36:29:342 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.TradeClient         : [TradeClient#markOrderPaySuccess] user-info: 1
+16:36:29:343 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.TradeClient         : [TradeClient#markOrderPaySuccess] ---> END HTTP (0-byte body)
+16:36:29:474 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.TradeClient         : [TradeClient#markOrderPaySuccess] <--- HTTP/1.1 200 (131ms)
+16:36:29:474 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.TradeClient         : [TradeClient#markOrderPaySuccess] connection: keep-alive
+16:36:29:474 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.TradeClient         : [TradeClient#markOrderPaySuccess] content-length: 0
+16:36:29:474 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.TradeClient         : [TradeClient#markOrderPaySuccess] date: Tue, 24 Mar 2026 08:36:29 GMT
+16:36:29:474 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.TradeClient         : [TradeClient#markOrderPaySuccess] keep-alive: timeout=60
+16:36:29:474 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.TradeClient         : [TradeClient#markOrderPaySuccess] 
+16:36:29:474 DEBUG 20532 --- [http-nio-8085-exec-5] com.hmall.api.client.TradeClient         : [TradeClient#markOrderPaySuccess] <--- END HTTP (0-byte body)
+16:36:29:486  INFO 20532 --- [http-nio-8085-exec-5] i.seata.tm.api.DefaultGlobalTransaction  : Suspending current transaction, xid = 192.168.100.129:8099:27782987405455393
+16:36:29:486  INFO 20532 --- [http-nio-8085-exec-5] i.seata.tm.api.DefaultGlobalTransaction  : [192.168.100.129:8099:27782987405455393] commit status: Committed
+16:36:30:044  INFO 20532 --- [rpcDispatch_RMROLE_1_1_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455393,branchId=27782987405455395,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-pay,applicationData=null
+16:36:30:047  INFO 20532 --- [rpcDispatch_RMROLE_1_1_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455393 27782987405455395 jdbc:mysql://192.168.100.129:3306/hm-pay null
+16:36:30:048  INFO 20532 --- [rpcDispatch_RMROLE_1_1_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed

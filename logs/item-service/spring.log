@@ -1874,3 +1874,51 @@ Caused by: java.io.FileNotFoundException: class path resource [com/hmall/common/
 16:01:41:103  INFO 33204 --- [rpcDispatch_RMROLE_1_1_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455376,branchId=27782987405455379,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-item,applicationData=null
 16:01:41:105  INFO 33204 --- [rpcDispatch_RMROLE_1_1_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455376 27782987405455379 jdbc:mysql://192.168.100.129:3306/hm-item null
 16:01:41:106  INFO 33204 --- [rpcDispatch_RMROLE_1_1_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
+16:05:44:550 DEBUG 33204 --- [http-nio-8081-exec-6] c.h.i.mapper.ItemMapper.selectBatchIds   : ==>  Preparing: SELECT id,name,price,stock,image,category,brand,spec,sold,comment_count,isAD,status,create_time,update_time,creater,updater FROM item WHERE id IN ( ? )
+16:05:44:551 DEBUG 33204 --- [http-nio-8081-exec-6] c.h.i.mapper.ItemMapper.selectBatchIds   : ==> Parameters: 317578(Long)
+16:05:44:553 DEBUG 33204 --- [http-nio-8081-exec-6] c.h.i.mapper.ItemMapper.selectBatchIds   : <==      Total: 1
+16:05:51:890  WARN 33204 --- [http-nio-8081-exec-2] c.h.item.service.impl.ItemServiceImpl    : SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65317d58] Transaction not enabled
+16:05:51:891 DEBUG 33204 --- [http-nio-8081-exec-2] c.h.item.mapper.ItemMapper.updateStock   : ==>  Preparing: UPDATE item SET stock = stock - ? WHERE id = ?
+16:05:51:892 DEBUG 33204 --- [http-nio-8081-exec-2] c.h.item.mapper.ItemMapper.updateStock   : ==> Parameters: 1(Integer), 317578(Long)
+16:05:52:058  INFO 33204 --- [rpcDispatch_RMROLE_1_2_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455380,branchId=27782987405455383,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-item,applicationData=null
+16:05:52:058  INFO 33204 --- [rpcDispatch_RMROLE_1_2_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455380 27782987405455383 jdbc:mysql://192.168.100.129:3306/hm-item null
+16:05:52:058  INFO 33204 --- [rpcDispatch_RMROLE_1_2_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
+16:06:01:798 DEBUG 33204 --- [http-nio-8081-exec-1] c.h.i.mapper.ItemMapper.selectBatchIds   : ==>  Preparing: SELECT id,name,price,stock,image,category,brand,spec,sold,comment_count,isAD,status,create_time,update_time,creater,updater FROM item WHERE id IN ( ? )
+16:06:01:799 DEBUG 33204 --- [http-nio-8081-exec-1] c.h.i.mapper.ItemMapper.selectBatchIds   : ==> Parameters: 317578(Long)
+16:06:01:800 DEBUG 33204 --- [http-nio-8081-exec-1] c.h.i.mapper.ItemMapper.selectBatchIds   : <==      Total: 1
+16:06:01:876  WARN 33204 --- [http-nio-8081-exec-7] c.h.item.service.impl.ItemServiceImpl    : SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7859fbb1] Transaction not enabled
+16:06:01:876 DEBUG 33204 --- [http-nio-8081-exec-7] c.h.item.mapper.ItemMapper.updateStock   : ==>  Preparing: UPDATE item SET stock = stock - ? WHERE id = ?
+16:06:01:878 DEBUG 33204 --- [http-nio-8081-exec-7] c.h.item.mapper.ItemMapper.updateStock   : ==> Parameters: 1(Integer), 317578(Long)
+16:06:02:047  INFO 33204 --- [rpcDispatch_RMROLE_1_3_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455384,branchId=27782987405455387,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-item,applicationData=null
+16:06:02:047  INFO 33204 --- [rpcDispatch_RMROLE_1_3_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455384 27782987405455387 jdbc:mysql://192.168.100.129:3306/hm-item null
+16:06:02:047  INFO 33204 --- [rpcDispatch_RMROLE_1_3_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
+16:31:05:586 DEBUG 33204 --- [http-nio-8081-exec-9] c.h.i.m.ItemMapper.selectPage_mpCount    : ==>  Preparing: SELECT COUNT(*) FROM item WHERE (status = ?)
+16:31:05:592 DEBUG 33204 --- [http-nio-8081-exec-9] c.h.i.m.ItemMapper.selectPage_mpCount    : ==> Parameters: 1(Integer)
+16:31:05:627 DEBUG 33204 --- [http-nio-8081-exec-9] c.h.i.m.ItemMapper.selectPage_mpCount    : <==      Total: 1
+16:31:05:639 DEBUG 33204 --- [http-nio-8081-exec-9] c.h.item.mapper.ItemMapper.selectPage    : ==>  Preparing: SELECT id, name, price, stock, image, category, brand, spec, sold, comment_count, isAD, status, create_time, update_time, creater, updater FROM item WHERE (status = ?) ORDER BY update_time DESC LIMIT ?
+16:31:05:640 DEBUG 33204 --- [http-nio-8081-exec-9] c.h.item.mapper.ItemMapper.selectPage    : ==> Parameters: 1(Integer), 20(Long)
+16:31:05:655 DEBUG 33204 --- [http-nio-8081-exec-9] c.h.item.mapper.ItemMapper.selectPage    : <==      Total: 20
+16:36:06:022 DEBUG 33204 --- [http-nio-8081-exec-4] c.h.i.m.ItemMapper.selectPage_mpCount    : ==>  Preparing: SELECT COUNT(*) FROM item WHERE (status = ?)
+16:36:06:025 DEBUG 33204 --- [http-nio-8081-exec-4] c.h.i.m.ItemMapper.selectPage_mpCount    : ==> Parameters: 1(Integer)
+16:36:06:034 DEBUG 33204 --- [http-nio-8081-exec-4] c.h.i.m.ItemMapper.selectPage_mpCount    : <==      Total: 1
+16:36:06:035 DEBUG 33204 --- [http-nio-8081-exec-4] c.h.item.mapper.ItemMapper.selectPage    : ==>  Preparing: SELECT id, name, price, stock, image, category, brand, spec, sold, comment_count, isAD, status, create_time, update_time, creater, updater FROM item WHERE (status = ?) ORDER BY update_time DESC LIMIT ?
+16:36:06:036 DEBUG 33204 --- [http-nio-8081-exec-4] c.h.item.mapper.ItemMapper.selectPage    : ==> Parameters: 1(Integer), 20(Long)
+16:36:06:047 DEBUG 33204 --- [http-nio-8081-exec-4] c.h.item.mapper.ItemMapper.selectPage    : <==      Total: 20
+16:36:08:441 DEBUG 33204 --- [http-nio-8081-exec-3] c.h.i.mapper.ItemMapper.selectBatchIds   : ==>  Preparing: SELECT id,name,price,stock,image,category,brand,spec,sold,comment_count,isAD,status,create_time,update_time,creater,updater FROM item WHERE id IN ( ? , ? )
+16:36:08:443 DEBUG 33204 --- [http-nio-8081-exec-3] c.h.i.mapper.ItemMapper.selectBatchIds   : ==> Parameters: 100000006163(Long), 5001207(Long)
+16:36:08:446 DEBUG 33204 --- [http-nio-8081-exec-3] c.h.i.mapper.ItemMapper.selectBatchIds   : <==      Total: 2
+16:36:18:373 DEBUG 33204 --- [http-nio-8081-exec-5] c.h.i.mapper.ItemMapper.selectBatchIds   : ==>  Preparing: SELECT id,name,price,stock,image,category,brand,spec,sold,comment_count,isAD,status,create_time,update_time,creater,updater FROM item WHERE id IN ( ? , ? , ? )
+16:36:18:374 DEBUG 33204 --- [http-nio-8081-exec-5] c.h.i.mapper.ItemMapper.selectBatchIds   : ==> Parameters: 100000006163(Long), 317580(Long), 5001207(Long)
+16:36:18:377 DEBUG 33204 --- [http-nio-8081-exec-5] c.h.i.mapper.ItemMapper.selectBatchIds   : <==      Total: 3
+16:36:22:543 DEBUG 33204 --- [http-nio-8081-exec-6] c.h.i.mapper.ItemMapper.selectBatchIds   : ==>  Preparing: SELECT id,name,price,stock,image,category,brand,spec,sold,comment_count,isAD,status,create_time,update_time,creater,updater FROM item WHERE id IN ( ? )
+16:36:22:547 DEBUG 33204 --- [http-nio-8081-exec-6] c.h.i.mapper.ItemMapper.selectBatchIds   : ==> Parameters: 317580(Long)
+16:36:22:549 DEBUG 33204 --- [http-nio-8081-exec-6] c.h.i.mapper.ItemMapper.selectBatchIds   : <==      Total: 1
+16:36:23:144  WARN 33204 --- [http-nio-8081-exec-2] c.h.item.service.impl.ItemServiceImpl    : SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@57be6eb4] Transaction not enabled
+16:36:23:146 DEBUG 33204 --- [http-nio-8081-exec-2] c.h.item.mapper.ItemMapper.updateStock   : ==>  Preparing: UPDATE item SET stock = stock - ? WHERE id = ?
+16:36:23:147 DEBUG 33204 --- [http-nio-8081-exec-2] c.h.item.mapper.ItemMapper.updateStock   : ==> Parameters: 1(Integer), 317580(Long)
+16:36:24:063  INFO 33204 --- [rpcDispatch_RMROLE_1_4_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455388,branchId=27782987405455392,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-item,applicationData=null
+16:36:24:063  INFO 33204 --- [rpcDispatch_RMROLE_1_4_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455388 27782987405455392 jdbc:mysql://192.168.100.129:3306/hm-item null
+16:36:24:064  INFO 33204 --- [rpcDispatch_RMROLE_1_4_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
+16:36:31:122 DEBUG 33204 --- [http-nio-8081-exec-1] c.h.i.mapper.ItemMapper.selectBatchIds   : ==>  Preparing: SELECT id,name,price,stock,image,category,brand,spec,sold,comment_count,isAD,status,create_time,update_time,creater,updater FROM item WHERE id IN ( ? , ? )
+16:36:31:125 DEBUG 33204 --- [http-nio-8081-exec-1] c.h.i.mapper.ItemMapper.selectBatchIds   : ==> Parameters: 100000006163(Long), 5001207(Long)
+16:36:31:129 DEBUG 33204 --- [http-nio-8081-exec-1] c.h.i.mapper.ItemMapper.selectBatchIds   : <==      Total: 2

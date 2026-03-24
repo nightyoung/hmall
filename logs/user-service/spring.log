@@ -1638,3 +1638,26 @@
 16:01:26:863 DEBUG 34036 --- [http-nio-8083-exec-5] c.h.user.mapper.UserMapper.selectOne     : ==>  Preparing: SELECT id,username,password,phone,create_time,update_time,status,balance FROM user WHERE (username = ?)
 16:01:26:880 DEBUG 34036 --- [http-nio-8083-exec-5] c.h.user.mapper.UserMapper.selectOne     : ==> Parameters: Jack(String)
 16:01:26:904 DEBUG 34036 --- [http-nio-8083-exec-5] c.h.user.mapper.UserMapper.selectOne     : <==      Total: 1
+16:30:51:800 DEBUG 34036 --- [http-nio-8083-exec-3] c.h.user.mapper.UserMapper.selectOne     : ==>  Preparing: SELECT id,username,password,phone,create_time,update_time,status,balance FROM user WHERE (username = ?)
+16:30:51:805 DEBUG 34036 --- [http-nio-8083-exec-3] c.h.user.mapper.UserMapper.selectOne     : ==> Parameters: Jack(String)
+16:30:51:824 DEBUG 34036 --- [http-nio-8083-exec-3] c.h.user.mapper.UserMapper.selectOne     : <==      Total: 1
+16:30:56:718 DEBUG 34036 --- [http-nio-8083-exec-4] c.h.user.mapper.UserMapper.selectOne     : ==>  Preparing: SELECT id,username,password,phone,create_time,update_time,status,balance FROM user WHERE (username = ?)
+16:30:56:719 DEBUG 34036 --- [http-nio-8083-exec-4] c.h.user.mapper.UserMapper.selectOne     : ==> Parameters: Jack(String)
+16:30:56:721 DEBUG 34036 --- [http-nio-8083-exec-4] c.h.user.mapper.UserMapper.selectOne     : <==      Total: 1
+16:31:07:274 DEBUG 34036 --- [http-nio-8083-exec-2] c.h.u.mapper.AddressMapper.selectList    : ==>  Preparing: SELECT id,user_id,province,city,town,mobile,street,contact,is_default,notes FROM address WHERE (user_id = ?)
+16:31:07:276 DEBUG 34036 --- [http-nio-8083-exec-2] c.h.u.mapper.AddressMapper.selectList    : ==> Parameters: 1(Long)
+16:31:07:396 DEBUG 34036 --- [http-nio-8083-exec-2] c.h.u.mapper.AddressMapper.selectList    : <==      Total: 4
+16:36:20:954 DEBUG 34036 --- [http-nio-8083-exec-10] c.h.u.mapper.AddressMapper.selectList    : ==>  Preparing: SELECT id,user_id,province,city,town,mobile,street,contact,is_default,notes FROM address WHERE (user_id = ?)
+16:36:20:956 DEBUG 34036 --- [http-nio-8083-exec-10] c.h.u.mapper.AddressMapper.selectList    : ==> Parameters: 1(Long)
+16:36:20:960 DEBUG 34036 --- [http-nio-8083-exec-10] c.h.u.mapper.AddressMapper.selectList    : <==      Total: 4
+16:36:28:680  INFO 34036 --- [http-nio-8083-exec-8] c.h.user.service.impl.UserServiceImpl    : 开始扣款
+16:36:28:708 DEBUG 34036 --- [http-nio-8083-exec-8] c.h.user.mapper.UserMapper.selectById    : ==>  Preparing: SELECT id,username,password,phone,create_time,update_time,status,balance FROM user WHERE id=?
+16:36:28:797 DEBUG 34036 --- [http-nio-8083-exec-8] c.h.user.mapper.UserMapper.selectById    : ==> Parameters: 1(Long)
+16:36:28:800 DEBUG 34036 --- [http-nio-8083-exec-8] c.h.user.mapper.UserMapper.selectById    : <==      Total: 1
+16:36:28:867 DEBUG 34036 --- [http-nio-8083-exec-8] c.h.user.mapper.UserMapper.updateMoney   : ==>  Preparing: update user set balance = balance - 28600 where id = ?
+16:36:28:881 DEBUG 34036 --- [http-nio-8083-exec-8] c.h.user.mapper.UserMapper.updateMoney   : ==> Parameters: 1(Long)
+16:36:29:120 DEBUG 34036 --- [http-nio-8083-exec-8] c.h.user.mapper.UserMapper.updateMoney   : <==    Updates: 1
+16:36:29:121  INFO 34036 --- [http-nio-8083-exec-8] c.h.user.service.impl.UserServiceImpl    : 扣款成功
+16:36:30:027  INFO 34036 --- [rpcDispatch_RMROLE_1_1_48] i.s.c.r.p.c.RmBranchCommitProcessor      : rm client handle branch commit process:xid=192.168.100.129:8099:27782987405455393,branchId=27782987405455394,branchType=AT,resourceId=jdbc:mysql://192.168.100.129:3306/hm-user,applicationData=null
+16:36:30:029  INFO 34036 --- [rpcDispatch_RMROLE_1_1_48] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.100.129:8099:27782987405455393 27782987405455394 jdbc:mysql://192.168.100.129:3306/hm-user null
+16:36:30:030  INFO 34036 --- [rpcDispatch_RMROLE_1_1_48] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
